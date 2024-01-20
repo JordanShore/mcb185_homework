@@ -1,0 +1,14 @@
+Sat Jan 20 12:03:01 PM PST 2024
+user: jordan
+home: /home/jordan
+shell: /bin/bash
+pwd: /home/jordan/Code/mcb185_homework
+path: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+Linux jordan-virtualbox 6.5.0-14-generic #14~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Mon Nov 20 18:15:30 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+Python 3.10.12
+/home/jordan/Code
+/home/jordan/Code/mcb185_homework
+/home/jordan/Code/mcb185_homework/.git
+/home/jordan/Code/MCB185
+/home/jordan/Code/MCB185/data
+/home/jordan/Code/MCB185/.git
