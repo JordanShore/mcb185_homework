@@ -1,5 +1,3 @@
-# 20demo.py by Jordan Shore
-"""
-Multi-Line Comment
-"""
-print("Hello World")
+#20demo.py by Jordan Shore
+
+print('hello, again')
