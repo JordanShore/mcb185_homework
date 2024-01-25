@@ -8,16 +8,17 @@
 def quadratic(a,b,c):
 	import math
 	import sys
-#Checks if there will be a negative sqrt. 
-	if ((b**2-4*a*c)<0): sys.exit("Error, no real solutions.")
-#Calculate x intercepts.
-	xint1 = ((-1*b + math.sqrt(b**2-4*a*c))/(2*a))
-	xint2 = ((-1*b - math.sqrt(b**2-4*a*c))/(2*a))
+#Checks for negative sqrt.
+	if ((b**2-4*a*c)<0): 
+		xint1,xint2 = None,None
+	else:
+		xint1 = ((-1*b + math.sqrt(b**2-4*a*c))/(2*a))
+		xint2 = ((-1*b - math.sqrt(b**2-4*a*c))/(2*a))
 
 	return xint1,xint2
 
 #Testing Function
-firstx1,firstx2 = quadratic(3,12,9)
+firstx1,firstx2 = quadratic(3,12,30)
 print("Test 1, X intercepts:", firstx1,",",firstx2)
 secondx1,secondx2 = quadratic(1,4,4)
 print("Test 2, X intercepts:", secondx1,",",secondx2)
