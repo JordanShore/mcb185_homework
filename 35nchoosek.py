@@ -18,11 +18,11 @@ def factorial(n):
 	"""
 
 	ftrl = 1
-	for i in range(1,n+1):
+	for i in range(1, n+1):
 		ftrl = ftrl * i 
 	return ftrl
 
-def nck(n,k):
+def nck(n, k):
 	"""
 	n choose k is the number of possible combinations of choices of k, for n options.
 
@@ -36,9 +36,9 @@ def nck(n,k):
 	nchoosek: Int, value of n choose k.
 	"""
 
-	nchoosek = int(factorial(n) / factorial(k) * factorial(n-k))
+	nchoosek = factorial(n) / factorial(k) * factorial(n-k)
 	return nchoosek
 
-print("5 choose 3 is", nck(5,3))
-print("13 choose 6 is", nck(13,6))
-print("7 choose 2 is", nck(7,2))
+print("5 choose 3 is", nck(5, 3))
+print("13 choose 6 is", nck(13, 6))
+print("7 choose 2 is", nck(7, 2))
