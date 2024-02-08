@@ -87,5 +87,6 @@ def nilakantha(depth):
 
 	return pi
 
-for i in range(100):
+#print(gregory_leibenz(10000))
+for i in range(101):
 	print(nilakantha(i), gregory_leibenz(i))
