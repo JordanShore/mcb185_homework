@@ -1,1 +1,4 @@
-grep "Y" kytedoolittle | cut -f 3 
+Average for 3D6: 10.4828
+Average for 3D6r1: 11.7417
+Average for 3D6x2: 13.4042
+Average for 4D6d1: 12.2239
