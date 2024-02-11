@@ -16,7 +16,7 @@ for i in range(trials):
 	if r > 2: z2 += 1
 	if r > 3: z3 += 3
 
-#Prints the proportion of trials 1,2,3 z scores above the mean. 
+#Prints the proportion of trials 1, 2, 3 z scores above the mean. 
 print(z1/trials, "of the values are > 1 z score above the mean.")
 print(z2/trials, "of the values are > 2 z score above the mean.")
 print(z3/trials, "of the values are > 3 z score above the mean.")

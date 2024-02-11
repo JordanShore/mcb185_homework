@@ -12,9 +12,9 @@ gamesplayed = 100000
 for i in range(gamesplayed):
 	score=0
 #Inner FOR loop plays the game by rolling 2 D6 and adding the round number to the score if you roll doubles.
-	for roundnumber in range(2,13):
-		d1 = random.randint(1,6)
-		d2 = random.randint(1,6)
+	for roundnumber in range(2, 13):
+		d1 = random.randint(1, 6)
+		d2 = random.randint(1, 6)
 		if d1+d2 == roundnumber:
 			score += roundnumber
 
@@ -23,5 +23,5 @@ for i in range(gamesplayed):
 	if score == 0:
 		zerogames+=1
 
-print("You will score 0 points", zerogames / gamesplayed, "proportion of the time.")
+print("Scored 0 points", zerogames / gamesplayed, "proportion of the time.")
 print("Average score is", totalscore / gamesplayed)

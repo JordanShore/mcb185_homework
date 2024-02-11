@@ -12,12 +12,12 @@ def deathsave():
 	status = "Unconcious"
 
 	while status == "Unconcious":
-		turn = random.randint(1,20)
+		turn = random.randint(1, 20)
 		if turn == 20:
 			health += 1
 			status = "Revived"
 			break
-		elif (turn < 20) and (turn >= 10):
+		elif(turn < 20)and(turn >= 10):
 			success += 1
 		elif turn == 1: 
 			failure += 2

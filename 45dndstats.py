@@ -17,7 +17,7 @@ for i in range(trials):
 	#FOR loop Rolls 3D6.
 	oldschool = 0
 	for n in range(3):
-		ros = random.randint(1,6)
+		ros = random.randint(1, 6)
 		oldschool += ros
 	totos += oldschool
 
@@ -25,9 +25,9 @@ for i in range(trials):
 	#WHILE loop Rerolls 1s. 
 	nofailures = 0
 	for n in range(3):
-		rnf = random.randint(1,6)
-		if (rnf == 1):
-			rnf = random.randint(1,6)
+		rnf = random.randint(1, 6)
+		if rnf == 1:
+			rnf = random.randint(1, 6)
 		nofailures += rnf
 	totnf += nofailures
 
@@ -35,8 +35,8 @@ for i in range(trials):
 	#IF/ELSE takes the higher of the two rolls.
 	easymode = 0
 	for n in range(3):
-		em1 = random.randint(1,6)
-		em2 = random.randint(1,6)
+		em1 = random.randint(1, 6)
+		em2 = random.randint(1, 6)
 		if em1 >= em2:
 			rem = em1
 		else:
@@ -45,11 +45,12 @@ for i in range(trials):
 	totem += easymode
 
 	#FOR loop Rolls 4D6.
-	#IF statement finds the badroll, the min of 4, and subtracts it at the end from total.
+	#IF statement finds the badroll by calculating the min of 4, 
+	#then subtracts it at the end from total.
 	lowdrop = 0
 	badroll = 7
 	for n in range(4):
-		rld = random.randint(1,6)
+		rld = random.randint(1, 6)
 		if rld < badroll:
 			badroll = rld
 		lowdrop += rld
