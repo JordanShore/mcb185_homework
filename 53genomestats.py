@@ -1,4 +1,4 @@
-#53genomestat.py by Jordan Shore
+#53genomestats.py by Jordan Shore
 #
 #This program reports stats for a genome using functions for lists.
 
@@ -46,6 +46,7 @@ def stdev(vals):
 path = sys.argv[1]
 feature = sys.argv[2]
 
+#This FOR loop will go through the file and add all the feature lengths to processlist
 processlist = []
 with gzip.open(path, "rt") as file:
 	for line in file:
@@ -56,6 +57,7 @@ with gzip.open(path, "rt") as file:
 			featurelength = (end - start + 1)
 			processlist.append(featurelength)
 
+#Calculate all attributes for processlist
 ucount = listcount(processlist)
 umin,umax = minmax(processlist)
 umean = mean(processlist)
