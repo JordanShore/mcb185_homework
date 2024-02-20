@@ -1,7 +1,9 @@
 My Thoughts on MCB185
 =====================
 
+<center>
 ## Overall ##
+<center>
 The course is a useful course overall. As someone who has taken ECS32A I am still learning a lot of very important things. You asked for any opinions on course improvement, so I have some, but I want to say first that the course is not bad as it is. 
 
 ## Improving the Course ##
