@@ -15,17 +15,17 @@ def listcount(vals):
 	return count
 #Min and Max
 def minmax(vals):
-   mini = vals[0]
-   maxi = vals[0]
-   for val in vals:
-       if val < mini: mini = val
-       if val > maxi: maxi = val
-   return mini, maxi
+	mini = vals[0]
+	maxi = vals[0]
+	for val in vals:
+		if val < mini: mini = val
+		if val > maxi: maxi = val
+	return mini, maxi
 #Mean
 def mean(vals):
-   total = 0
-   for val in vals: total += val
-   return total / len(vals)
+	total = 0
+	for val in vals: total += val
+	return total / len(vals)
 #Median
 def median(vals):
 	vals.sort()
@@ -46,7 +46,7 @@ def stdev(vals):
 path = sys.argv[1]
 feature = sys.argv[2]
 
-#This FOR loop will go through the file and add all the feature lengths to processlist
+#FOR loop will go through the file adding feature lengths to processlist
 processlist = []
 with gzip.open(path, "rt") as file:
 	for line in file:
@@ -59,7 +59,7 @@ with gzip.open(path, "rt") as file:
 
 #Calculate all attributes for processlist
 ucount = listcount(processlist)
-umin,umax = minmax(processlist)
+umin, umax = minmax(processlist)
 umean = mean(processlist)
 ustdev = stdev(processlist)
 umed = median(processlist)

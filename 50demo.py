@@ -15,8 +15,8 @@ def quadratic(a, b, c):
 	return xint1, xint2
 
 #Unpacking a tuple
-x1,x2 = quadratic(1,5,6)
-print(x1,x2)
+x1, x2 = quadratic(1, 5, 6)
+print(x1, x2)
 
 print()
 
@@ -30,13 +30,13 @@ print(s_remade)
 print()
 
 #enumerate()
-for i,letter in enumerate(s):
-	print(i,letter)
+for i, letter in enumerate(s):
+	print(i, letter)
 
 print()
 
 #zip()
 lets = ['a','b','c','d']
-nums = [1,2,3,4]
-for l,n in zip(lets,nums):
-	print(l,n)
+nums = [1, 2, 3, 4]
+for l, n in zip(lets, nums):
+	print(l, n)

@@ -9,6 +9,7 @@ import sys
 def check_duplicates(people, days):
 #Checks if any birthdays are duplicates while being generated.
 #Returns 1 if True, 0 if False.
+
 	birthdays = []
 	duplicate = 0
 
@@ -20,7 +21,7 @@ This FOR loop:
 4: Adds the new birthday to the overall list.
 '''
 	for i in range(people):
-		new_bday = random.randint(1,days)
+		new_bday = random.randint(1, days)
 		for past_bdays in birthdays:
 			if new_bday == past_bdays:
 				duplicate = 1

@@ -1,6 +1,6 @@
 # 51cdslength.py by Jordan Shore
 #
-# This program reports the length of protein-coding genes in the E. Coli Genome.
+# This program reports the length of genes in the E. Coli Genome.
 
 import gzip
 

@@ -1,6 +1,6 @@
 # 52entropy.py by Jordan Shore
 #
-# This program calculates entropies for probabilities entered into the command line.
+# This program calculates entropies for probabilities in the command line.
 
 import sys
 import math
@@ -8,9 +8,12 @@ import math
 #Shannon Entropy from hw 25.
 def shannon_entropy(a, c, g, t):
 	tot = a + c + g + t
-#These IF / ELSE statements set the statement for each variable equal to 0 if the count is 0.
-#If a letter count is 0, then it would cause and error when taking a log.
-#But since it still accounts for 0 of the entropy, it needs to be counted as 0. 
+'''
+IF / ELSE statements set an overall value for each variable;
+This value is equal to 0 if count = 0 or the normal formula.
+If a letter count is 0, then it would cause and error when taking a log.
+But since it still accounts for 0 of the entropy, it needs to be counted as 0. 
+'''
 	if a != 0:
 		shannona = a / tot * math.log2(a)
 	else:
@@ -57,7 +60,7 @@ if not math.isclose(probsum, 1.0):
 
 #This FOR loop adds 0s to problist to make sure we have 4 values,
 #which will allow us to use shannon_entropy for our printout. 
-for i in range (4-probcount):
+for i in range(4 - probcount):
 	problist.append(0)
 
 print(shannon_entropy(problist[0],problist[1],problist[2],problist[3]))
