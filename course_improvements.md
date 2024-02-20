@@ -2,10 +2,10 @@ My Thoughts on MCB185
 =====================
 
 ## Overall ##
-The course is a useful course overall. As someone who has taken ECS32A I am still learning a lot of very useful things. You asked for any opinions on course improvement, so I have some, but I want to say first that the course is not bad as it is. 
+The course is a useful course overall. As someone who has taken ECS32A I am still learning a lot of very important things. You asked for any opinions on course improvement, so I have some, but I want to say first that the course is not bad as it is. 
 
 ## Improving the Course ##
-My NPB168 professor Dr. Jennifer Whistler includes extra credit quizzes and questions for improvements on the course. Then she reads them and actually makes the most prominent opinions from the students into changes she agrees with. I think this is the best strategy for improving any course. Her class is one of the best.
+My NPB168 professor _Dr. Jennifer Whistler_ includes extra credit quizzes and questions for improvements on the course. Then she reads them and actually makes the most prominent opinions from the students into changes she agrees with. I think this is the best strategy for improving any course. Her class is one of the best.
 
 ## Grading ##
 Your grading method is actually the only thing truly wrong with the class. Grades should be objective. The problem with not having an objective grade is it gives students no recourse to state that we deserve a different grade. With multiple choice tests and the like, we can say the professor is wrong and we are right, we can prove that we objectively deserve a certain grade. 
@@ -45,7 +45,7 @@ It's a unique format, and could be part of the overall grade. You don't even hav
 You asked whether you should care about cheating. In a coding class my answer is no. 
 In real coding people can copy or ChatGPT whatever they want, and their skill is both, how fast and well can they adapt what they can copy, and how well they can deal with completely new problems to the world. 
 
-My ECS32A professor Dr. Edwin Solares said he made his midterms ChatGPT proof. So he'd do them using ChatGPT, and then change them so that it would be wrong. If you are going to care about cheating in coding, I feel like that was a very reasonable way to go about it. 
+My ECS32A professor _Dr. Edwin Solares_ said he made his midterms ChatGPT proof. So he'd do them using ChatGPT, and then change them so that it would be wrong. If you are going to care about cheating in coding, I feel like that was a very reasonable way to go about it. 
 
 ## Getting People to Type ##
 You want everyone to type everything line by line from the Units. It will never happen because it isn't mandatory. I could see these HW taking 3-8 hours for most people, and piling on another hour or two of typing that we don't get graded on is too much. 
