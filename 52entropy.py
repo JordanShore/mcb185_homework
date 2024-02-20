@@ -1,4 +1,4 @@
-# 50demo.py by Jordan Shore
+# 52entropy.py by Jordan Shore
 #
 # This program calculates entropies for probabilities entered into the command line.
 
@@ -43,18 +43,20 @@ problist = sys.argv[1:]
 #Probabilities must sum to 1, and cannot be negative.
 probsum = 0
 probcount = 0
+#This FOR loop also counts the arguments entered and sums the probabilities
 for i in range(len(problist)):
-	print(problist[i])
 	problist[i] = float(problist[i])
 	if not ((problist[i]>=0) and (problist[i]<=1)):
 		sys.exit("Error: some probabilty is not between 0 and 1.")
 	probcount += 1
 	probsum += problist[i]
-	print(probsum)
 
+#For any errors we will sys.exit()
 if not math.isclose(probsum, 1.0):
 	sys.exit("Error: probabilties do not sum to 1.")
 
+#This FOR loop adds 0s to problist to make sure we have 4 values,
+#which will allow us to use shannon_entropy for our printout. 
 for i in range (4-probcount):
 	problist.append(0)
 
