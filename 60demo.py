@@ -1,3 +1,8 @@
+#60demo.py by Jordan Shore
+#
+#This program uses mcb185 to read FASTA files. 
+
+
 import mcb185
 import sys
 
