@@ -82,10 +82,6 @@ for i in range(len(seq)-windowsize):
 		finalseq += window[-1]
 
 
-print(finalseq)
-
-
-
 #Print like a FASTA file
 print(title, end = "")
 for i in range(0,len(finalseq),60):
