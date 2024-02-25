@@ -6,6 +6,12 @@
 def transcribe(dna):
     return dna.replace('T', 'U')
 
+def orfs(seq):
+	seq1 = seq[:]
+	seq2 = seq[1:]
+	seq3 = seq[2:]
+	return seq1,seq2,seq3
+
 def revcomp(dna):
 	rc = []
 	for nt in dna[::-1]:
