@@ -34,9 +34,9 @@ with gzip.open(path, "rt") as file:
 rseq = dogma.revcomp(seq)
 
 #Creates the reading frames, 3 forward 3 back and puts them in a list.
-fseq1,fseq2,fseq3 = dogma.orfs(seq)
-rseq1,rseq2,rseq3 = dogma.orfs(rseq)
-sequencelist = [fseq1,fseq2,fseq3,rseq1,rseq2,rseq3]
+fseq1, fseq2, fseq3 = dogma.orfs(seq)
+rseq1, rseq2, rseq3 = dogma.orfs(rseq)
+sequencelist = [fseq1, fseq2, fseq3, rseq1, rseq2, rseq3]
 
 #The first part of title list will be used for protein titles.
 titlelist = title.split()
@@ -59,7 +59,7 @@ Each iteration evaluates a single possible protein.
 potentialstart/end are found by .find("M") or .find("*")
 These represent Methionine and the STOP codon.
 
-If .find() ever doesn't find a start or stop it will return -1, ending the loop.
+If .find() doesn't find a start or stop it will return -1, ending the loop.
 
 potentialend - potentialstart signifies protein length.
 IF statement prints protein information and increases numprotein by 1.

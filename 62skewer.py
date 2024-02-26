@@ -26,7 +26,6 @@ with gzip.open(path, "rt") as file:
 			for nuc in line:
 					seq = seq + nuc
 
-#windowsize of 10 as in HW61
 #This chunk prints the starting gc_comps and skew using dogma
 start = 0
 end = start + windowsize

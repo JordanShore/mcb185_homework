@@ -1,6 +1,7 @@
 #61skewer.py by Jordan Shore
 #
 #This program prints gc_comp and gc_skew for a sequence
+#Modified to compete with hw 62. Slower by 16 seconds.
 import dogma
 import sys
 import gzip
@@ -36,3 +37,4 @@ for i in range(len(seq) -windowsize +1):
 	currentgc_comp = dogma.gc_comp(s)
 	currentgc_skew = dogma.gc_skew(s)
 	print(i, currentgc_comp, currentgc_skew)
+

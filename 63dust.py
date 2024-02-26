@@ -44,7 +44,7 @@ acount = window.count('A')
 ccount = window.count('C') 
 gcount = window.count('G')
 tcount = window.count('T')
-entropy = dogma.shannon_entropy(acount,ccount,gcount,tcount)
+entropy = dogma.shannon_entropy(acount, ccount, gcount, tcount)
 
 
 #For loop just building a string of Ns the size of the window
@@ -66,7 +66,7 @@ for i in range(len(seq)-windowsize):
 	gcount = window.count('G')
 	tcount = window.count('T')
 
-	entropy = dogma.shannon_entropy(acount,ccount,gcount,tcount)
+	entropy = dogma.shannon_entropy(acount, ccount, gcount, tcount)
 
 #Start and End increment changes the window
 	start += 1
@@ -84,7 +84,7 @@ for i in range(len(seq)-windowsize):
 
 #Print like a FASTA file
 print(title, end = "")
-for i in range(0,len(finalseq),60):
+for i in range(0, len(finalseq), 60):
 	print(finalseq[i:i+60])
 
 
