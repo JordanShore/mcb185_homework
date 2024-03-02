@@ -15,4 +15,4 @@ print(d.keys(), d.values(), list(d.values()))
 
 #itertools.product gives every combo of repeat=x elements.
 for nts in itertools.product('ACGT', repeat=3):
-    print(nts)
+	print(nts)

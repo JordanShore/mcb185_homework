@@ -7,75 +7,44 @@ import gzip
 import sys
 import mcb185
 
-'''
-The big FOR loop will go through and evaluate;
-The signal and transmembrane regions.
-If both are valid, it will set signal and transmembrane to True.
-Then and only then will it print the defline for the protein.
+#is_hydrophobic_region evaluates whether
+#1: The average KD hydrophobicity of any window of a specified size is;
+	# >= minave_kdh
+#2: There are no prolines in that window
+#If both then returns tmr = True, else False
+def is_hydrophobic_region(region, minave_kdh, windowsize):
+	start = 0
+	tmr = False
+	end = start + windowsize
+	window = region[start:end]
 
-There are two similar Inner FOR loops.
-Both evaluate all windows of a various length within their regions for;
-1. High enough average KD hydrophobicity
-2. No Prolines
+	for i in range(len(region)-windowsize):
+#Loops through each window
+		tot_window_kdh = 0
+		for aa in window:
+			tot_window_kdh = tot_window_kdh + dogma.kd_hydrophobicity(aa)
+		avg_window_kdh = tot_window_kdh / windowsize
 
-Innermost FOR loops are just calculating window averages.
-'''
+		if avg_window_kdh >= minave_kdh and window.find("P") == -1:
+			tmr = True
+			break
+
+#Start and End increment changes the window
+		start += 1
+		end += 1 
+		window = signalregion[start:end]
+
+	return tmr
+
+#Checks if the signal and transmembrane regions are hydrophobic.
 for defline, seq in mcb185.read_fasta(sys.argv[1]):
 	signal = False
 	transmembrane = False
 	signalregion = seq[:30]
 	transmembraneregion = seq[30:]
 
-#Inner FOR loop sp.
-	spwindowsize = 8
-	spstart = 0
-	spend = spstart + spwindowsize
-	spwindow = signalregion[spstart:spend]
-
-	#Loops through each window
-	for i in range(len(signalregion)-spwindowsize):
-
-		#Calculate average KD hydrophobicity within window.
-		spwindowkd = 0
-		for aa in spwindow:
-			spwindowkd = spwindowkd + dogma.kd_hydrophobicity(aa)
-		avgspwindowkd = spwindowkd / 8
-
-		#Is this window valid? If so, we are done, break.
-		if avgspwindowkd >= 2.5 and spwindow.find("P") == -1:
-			signal = True
-			break
-
-#Start and End increment changes the window
-		spstart += 1
-		spend += 1 
-		spwindow = signalregion[spstart:spend]
-
-#Inner FOR loop tr.
-	trwindowsize = 11
-	trstart = 0
-	trend = trstart + trwindowsize
-	trwindow = transmembraneregion[trstart:trend]
-
-	#Loops through each window
-	for i in range(len(signalregion)-trwindowsize):
-
-		#Calculate average KD hydrophobicity within window.
-		trwindowkd = 0
-		for aa in trwindow:
-			trwindowkd = trwindowkd + dogma.kd_hydrophobicity(aa)
-		avgtrwindowkd = trwindowkd / 11
-
-		#Is this window valid? If so, we are done, break.
-		if avgtrwindowkd >= 2 and trwindow.find("P") == -1:
-			transmembrane = True
-			break
-
-#Start and End increment changes the window
-		trstart += 1
-		trend += 1 
-		trwindow = transmembraneregion[trstart:trend]
-
+	signal = is_hydrophobic_region(signalregion, 2.5, 8)
+	transmembrane = is_hydrophobic_region(transmembraneregion, 2, 11)
 
 	if signal == True and transmembrane == True:
 		print(defline)

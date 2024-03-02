@@ -22,6 +22,12 @@ def revcomp(dna):
 		else:           rc.append('N')
 	return ''.join(rc)
 
+def frseqs(seq):
+	rseq = revcomp(seq)
+	fseq1, fseq2, fseq3 = orfs(seq)
+	rseq1, rseq2, rseq3 = orfs(rseq)
+	return [fseq1, fseq2, fseq3, rseq1, rseq2, rseq3]
+
 def gc_comp(seq):
 	return (seq.count('C') + seq.count('G')) / len(seq)
 
@@ -30,7 +36,6 @@ def gc_skew(seq):
 	g = seq.count('G')
 	if c + g == 0: return 0
 	return (g - c) / (g + c)
-
 
 def hydropathy(seq):
 	kdh = {
