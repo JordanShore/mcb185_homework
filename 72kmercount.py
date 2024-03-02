@@ -7,6 +7,8 @@ import sys
 import gzip
 import itertools
 
+#Taken from Unit 7
+#Builds a dictionary with counts of kmers with length k.
 k = int(sys.argv[2])
 kcount = {}
 for defline, seq in mcb185.read_fasta(sys.argv[1]):

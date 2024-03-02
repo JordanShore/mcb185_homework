@@ -8,15 +8,29 @@ import gzip
 import itertools
 import dogma
 
-#This WHILE loop finds the smallest nonexistent kmer,
-#then prints all kmers with 0 appearances in the dictionary.
-#k is the current size of kmer we are checking
+#Initialize variables for the while loop.
+#Count is just for testing. 
 k = 1
 count = 0
 kmer_present = True
 print("Missing kmers:")
+
+'''
+This WHILE loop finds the smallest nonexistent kmer,
+then prints all kmers with 0 appearances in the dictionary.
+k is the current size of kmer we are checking.
+
+The first FOR loop finds all kmers and reverse kmers and 
+adds their counts to the kcount dictionary.
+
+The second FOR loop checks if the every iteration of kmers length k 
+is in kcount. Once it has found a kmer combo not in kcount,
+kmer_present is set to false and the WHILE loop ends.
+The second FOR loop prints all kmers of that length not in kcount.
+'''
 while kmer_present == True:
 	kcount = {}
+
 	for defline, seq in mcb185.read_fasta(sys.argv[1]):
 		rseq = dogma.revcomp(seq)
 		for i in range(len(seq) -k +1):
@@ -36,6 +50,6 @@ while kmer_present == True:
 		else:             
 			kmer_present = False
 			print(curr_kmer)
-			count += 1
+			#count += 1
 	k += 1
-print(count)
+#print(count)
