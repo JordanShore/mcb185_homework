@@ -4,13 +4,13 @@
 
 
 def transcribe(dna):
-    return dna.replace('T', 'U')
+	return dna.replace('T', 'U')
 
 def orfs(seq):
 	seq1 = seq[:]
 	seq2 = seq[1:]
 	seq3 = seq[2:]
-	return seq1,seq2,seq3
+	return seq1, seq2, seq3
 
 def revcomp(dna):
 	rc = []
@@ -51,66 +51,72 @@ def hydropathy(seq):
 
 #Done beautifully by ChatGPT
 def translate(dna):
-    aas = []
-    for i in range(0, len(dna), 3):
-        codon = dna[i:i + 3]
-        if codon == 'TTT' or codon == 'TTC':
-            aas.append('F')
-        elif codon == 'TTA' or codon == 'TTG' or codon == 'CTT' or codon == 'CTC' or codon == 'CTA' or codon == 'CTG':
-            aas.append('L')
-        elif codon == 'ATT' or codon == 'ATC' or codon == 'ATA':
-            aas.append('I')
-        elif codon == 'ATG':
-            aas.append('M')
-        elif codon == 'GTT' or codon == 'GTC' or codon == 'GTA' or codon == 'GTG':
-            aas.append('V')
-        elif codon == 'TCT' or codon == 'TCC' or codon == 'TCA' or codon == 'TCG':
-            aas.append('S')
-        elif codon == 'CCT' or codon == 'CCC' or codon == 'CCA' or codon == 'CCG':
-            aas.append('P')
-        elif codon == 'ACT' or codon == 'ACC' or codon == 'ACA' or codon == 'ACG':
-            aas.append('T')
-        elif codon == 'GCT' or codon == 'GCC' or codon == 'GCA' or codon == 'GCG':
-            aas.append('A')
-        elif codon == 'TAT' or codon == 'TAC':
-            aas.append('Y')
-        elif codon == 'TAA' or codon == 'TAG':
-            aas.append('*')
-        elif codon == 'CAT' or codon == 'CAC':
-            aas.append('H')
-        elif codon == 'CAA' or codon == 'CAG':
-            aas.append('Q')
-        elif codon == 'AAT' or codon == 'AAC':
-            aas.append('N')
-        elif codon == 'AAA' or codon == 'AAG':
-            aas.append('K')
-        elif codon == 'GAT' or codon == 'GAC':
-            aas.append('D')
-        elif codon == 'GAA' or codon == 'GAG':
-            aas.append('E')
-        elif codon == 'TGT' or codon == 'TGC':
-            aas.append('C')
-        elif codon == 'TGA':
-            aas.append('*')
-        elif codon == 'TGG':
-            aas.append('W')
-        elif codon == 'CGT' or codon == 'CGC' or codon == 'CGA' or codon == 'CGG':
-            aas.append('R')
-        elif codon == 'AGT' or codon == 'AGC':
-            aas.append('S')
-        elif codon == 'AGA' or codon == 'AGG':
-            aas.append('R')
-        elif codon == 'GGT' or codon == 'GGC' or codon == 'GGA' or codon == 'GGG':
-            aas.append('G')
-        else:
-            aas.append('X')
+	aas = []
+	for i in range(0, len(dna), 3):
+		codon = dna[i:i + 3]
+		if codon == 'TTT' or codon == 'TTC':
+			aas.append('F')
+		elif codon == 'TTA' or codon == 'TTG' or codon == 'CTT' or codon == 'CTC':
+			aas.append('L')
+		elif codon == 'CTA' or codon == 'CTG':
+			aas.append('L')
+		elif codon == 'ATT' or codon == 'ATC' or codon == 'ATA':
+			aas.append('I')
+		elif codon == 'ATG':
+			aas.append('M')
+		elif codon == 'GTT' or codon == 'GTC' or codon == 'GTA' or codon == 'GTG':
+			aas.append('V')
+		elif codon == 'TCT' or codon == 'TCC' or codon == 'TCA' or codon == 'TCG':
+			aas.append('S')
+		elif codon == 'CCT' or codon == 'CCC' or codon == 'CCA' or codon == 'CCG':
+			aas.append('P')
+		elif codon == 'ACT' or codon == 'ACC' or codon == 'ACA' or codon == 'ACG':
+			aas.append('T')
+		elif codon == 'GCT' or codon == 'GCC' or codon == 'GCA' or codon == 'GCG':
+			aas.append('A')
+		elif codon == 'TAT' or codon == 'TAC':
+			aas.append('Y')
+		elif codon == 'TAA' or codon == 'TAG':
+			aas.append('*')
+		elif codon == 'CAT' or codon == 'CAC':
+			aas.append('H')
+		elif codon == 'CAA' or codon == 'CAG':
+			aas.append('Q')
+		elif codon == 'AAT' or codon == 'AAC':
+			aas.append('N')
+		elif codon == 'AAA' or codon == 'AAG':
+			aas.append('K')
+		elif codon == 'GAT' or codon == 'GAC':
+			aas.append('D')
+		elif codon == 'GAA' or codon == 'GAG':
+			aas.append('E')
+		elif codon == 'TGT' or codon == 'TGC':
+			aas.append('C')
+		elif codon == 'TGA':
+			aas.append('*')
+		elif codon == 'TGG':
+			aas.append('W')
+		elif codon == 'CGT' or codon == 'CGC' or codon == 'CGA':
+			aas.append('R')
+		elif codon == 'CGG':
+			aas.append('R')
+		elif codon == 'AGT' or codon == 'AGC':
+			aas.append('S')
+		elif codon == 'AGA' or codon == 'AGG':
+			aas.append('R')
+		elif codon == 'GGT' or codon == 'GGC' or codon == 'GGA' or codon == 'GGG':
+			aas.append('G')
+		else:
+			aas.append('X')
 
-    return ''.join(aas)
+	return ''.join(aas)
+
 
 #From HW 25.
 # 25entropy.py by Jordan Shore
 #
-# This program contains a function that calculates Shannon Entropy for DNA Nucleotides. 
+# This program contains a function that calculates Shannon Entropy,
+# for DNA Nucleotides. 
 
 import math
 
@@ -118,9 +124,11 @@ import math
 #Returns Shannon Entropy.
 def shannon_entropy(a, c, g, t):
 	tot = a + c + g + t
-#These IF / ELSE statements set the statement for each variable equal to 0 if the count is 0.
+#These IF / ELSE statements set the statement for each variable equal to 0;
+# if the count is 0.
 #If a letter count is 0, then it would cause and error when taking a log.
-#But since it still accounts for 0 of the entropy, it needs to be counted as 0. 
+#But since it still accounts for 0 of the entropy, 
+# it needs to be counted as 0. 
 	if a != 0:
 		shannona = (a / tot) * math.log2(a / tot)
 	else:
@@ -175,3 +183,72 @@ def kd_hydrophobicity(aa):
 		print("Error Invalid Amino Acid. Use a capitalized single character.")
 
 	return hpb
+
+'''
+WHILE loop evaluates all the potential proteins in an aa transcript.
+Each iteration evaluates a single possible protein.
+
+potentialstart/end are found by .find("M") or .find("*")
+These represent Methionine and the STOP codon.
+
+If .find() doesn't find a start or stop it will return -1, ending the loop.
+
+potentialend - potentialstart signifies protein length.
+IF statement prints protein information and increases numprotein by 1.
+numprotein is just signifying how many proteins you've found.
+
+temptranscript if lastly changed to only be everything after the latest "*",
+this way we move forward through the transcript to the next possible protein.
+'''
+def proteins_list(seq, minprotein_size):
+	potentialstart = 0
+	potentialend = 0
+	proteins = []
+	aaseq = translate(seq)
+	while (potentialstart != -1) and (potentialend != -1):
+		potentialstart = aaseq.find("M")
+		potentialend = aaseq.find("*")
+
+		if potentialend - potentialstart >= minprotein_size:
+			proteins.append(aaseq[potentialstart:potentialend])
+		
+		aaseq = aaseq[potentialend+1:]
+
+	return proteins
+
+#Protein_indexes returns lists of the start and ends of all proteins,
+#within the DNA sequence.
+def protein_indexes(aaseq, proteins_list):
+	protein_locs = []
+#This FOR loop iterates through a list of proteins.
+#Then we will find them all within the amino acid sequence.
+	for protein in proteins_list:
+		start = 0 
+		end = 0
+		count_duplicates = 1
+		'''
+This WHILE loop checks for duplicate proteins.
+Because .find() only finds the first unless a second parameter is added.
+This parameter: count_duplicates tells how many times to find the sequence,
+	ie. count_duplicates = 2 means find the second instance of this protein.
+
+3 nucleotides per amino acid is why the aaseq.find() is X 3. 
+We are looking for location in the DNA, not the protein.
+Start != -3 signifies start != -1 meaning the protein wasn't found.
+		'''
+		while start != -3 and count_duplicates <= proteins_list.count(protein):
+			start = aaseq.find(protein, count_duplicates) * 3
+			end = start + (len(protein) * 3)
+			protein_locs.append([start, end])
+			count_duplicates += 1
+
+#This is very convoluted but, 
+# we then have to remove duplicate protein locations.
+#The WHILE loop does find the locations for the duplicates more than the first,
+# but it also adds them to the protein_locs multiple times;
+#In fact as many times as there are duplicates.
+	for locs in protein_locs:
+		if protein_locs.count(locs) > 1:
+			del protein_locs[protein_locs.index(locs)]
+
+	return protein_locs
