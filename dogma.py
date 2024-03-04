@@ -221,34 +221,16 @@ def proteins_list(seq, minprotein_size):
 def protein_indexes(aaseq, proteins_list):
 	protein_locs = []
 #This FOR loop iterates through a list of proteins.
-#Then we will find them all within the amino acid sequence.
-	for protein in proteins_list:
+#Then will find their locations within the amino acid sequence.
+	for i in range(len(proteins_list)):
 		start = 0 
 		end = 0
-		count_duplicates = 1
-		'''
-This WHILE loop checks for duplicate proteins.
-Because .find() only finds the first unless a second parameter is added.
-This parameter: count_duplicates tells how many times to find the sequence,
-	ie. count_duplicates = 2 means find the second instance of this protein.
-
-3 nucleotides per amino acid is why the aaseq.find() is X 3. 
-We are looking for location in the DNA, not the protein.
-Start != -3 signifies start != -1 meaning the protein wasn't found.
-		'''
-		while start != -3 and count_duplicates <= proteins_list.count(protein):
-			start = aaseq.find(protein, count_duplicates) * 3
-			end = start + (len(protein) * 3)
-			protein_locs.append([start, end])
-			count_duplicates += 1
-
-#This is very convoluted but, 
-# we then have to remove duplicate protein locations.
-#The WHILE loop does find the locations for the duplicates more than the first,
-# but it also adds them to the protein_locs multiple times;
-#In fact as many times as there are duplicates.
-	for locs in protein_locs:
-		if protein_locs.count(locs) > 1:
-			del protein_locs[protein_locs.index(locs)]
+#Duplicate_count accounts for the same protein appearing in multiple counts.
+#It says, in the list so far, how many of this protein are there?
+#That way aaseq.find() searches for the nth place where this duplicate appears.
+		duplicate_count = proteins_list[:i+1].count(proteins_list[i])
+		start = aaseq.find(proteins_list[i], duplicate_count) * 3
+		end = start + (len(proteins_list[i]) * 3)
+		protein_locs.append([start, end])
 
 	return protein_locs
