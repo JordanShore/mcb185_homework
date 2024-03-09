@@ -1,3 +1,7 @@
+#80demo.py by Jordan Shore
+#
+#This program demos complex data types.
+
 import json
 
 person = {
@@ -12,4 +16,10 @@ person = {
 
 person['mentors']['Gino'] = 'UCD'
 print(json.dumps(person, indent= 4))
-#person['mentors']['Gino'] = 'UCD'
+
+oligo = {
+    'Name': 'SO116',
+    'Length': 18,
+    'Sequence': 'ATTTAGGTGACACTATAG',
+    'Description': 'SP6 promoter sequencing primer'
+}

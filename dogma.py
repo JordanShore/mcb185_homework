@@ -234,3 +234,18 @@ def protein_indexes(aaseq, proteins_list):
 		protein_locs.append([start, end])
 
 	return protein_locs
+
+def read_catalog_csv(filepath):
+   catalog = []
+   with open(filepath) as fp:
+       for line in fp:
+           if line.startswith('#'): continue
+           name, length, seq, desc = line.rstrip().split(',')
+           record = {
+               'Name': name,
+               'Length': length,
+              'Sequence': seq,
+              'Description': desc
+          }
+          catalog.append(record)
+  return catalog
