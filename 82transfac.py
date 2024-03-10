@@ -1,30 +1,54 @@
 #82transfac.py by Jordan Shore
 #
-#This program 
+#This program reads transfac files and outputs them in json format.
 
 import mcb185
+import json
 import gzip
 import sys
-import re
 
-def read_transfac(filename):
-	count = 0
-	file = gzip.open(filename, 'rt')
-	for line in file:
-		count += 1
-		matrix_here == False
-		if count > 10: 
-			break
-		else:
-			line = line.split()
-			if line[0] == "ID":
-				line = line.split()
-				identification = line[1]
-			elif line.[0] == "PO":
-				matrix_here == True
-			while matrix_here == True:
-				#append acgt counts
-	print(identification)
+'''
+mcb185.read_transfac() gives an object where:
+#OuterDictionary
+ID = Key : MiddleDictionary = Value
+#MiddleDictionary
+'ACGT' = Key : InnerList = Value
+#InnerList
+Float = Element
 
 
-read_transfac(sys.argv[1])
+Ex. matrix['AGL3']['G'][2] gives:
+The 3rd pwm value for 'G' for the ID 'AGL3'
+
+We want an object where:
+#OuterList
+OuterDictionary = Element
+#OuterDictionary
+'id' = Key : ID = Value, 'pwm' = Key : MiddleList = Value
+#MiddleList
+InnerDictionary = Element
+#InnerDictionary
+'ACGT' = Key, Float = Value
+
+Ex. biglist[0]['pwm'][2]['G'] gives:
+The 3rd pwm value for 'G' for the ID 'AGL3'
+'''
+#These nested FOR loops convert the data as explained above.
+biglist = []
+matrix = mcb185.read_transfac(sys.argv[1])
+for key in matrix.keys():
+	#bigdict represents an ID and associated pwm.
+	bigdict = {"id":key,"pwm":[]}
+	#The inner FOR loop appends a dictionary for each pwm position.
+	for i in range(len(matrix[key]['A'])):
+		bigdict["pwm"].append({
+			"A":matrix[key]['A'][i],
+			"C":matrix[key]['C'][i],
+			"G":matrix[key]['G'][i],
+			"T":matrix[key]['T'][i],
+			})
+	biglist.append(bigdict)
+
+print(json.dumps(biglist, indent = 4))
+#print(biglist[0]['pwm'][2]['G'])
+#print(matrix['AGL3']['G'][2])
