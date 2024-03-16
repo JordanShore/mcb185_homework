@@ -25,9 +25,6 @@ Ex. transfac_object['AGL3']['pwm'][2]['G'] gives:
 The 3rd pwm value for 'G' for the ID 'AGL3'
 
 
-Ex. matrix['AGL3']['G'][2] gives:
-The 3rd pwm value for 'G' for the ID 'AGL3'
-
 We want an object where:
 #OuterList
 OuterDictionary = Element
@@ -46,10 +43,8 @@ biglist = []
 transfac_object = mcb185.extract_transfac(sys.argv[1])
 for key in transfac_object.keys():
 	biglist.append({
-		'id':transfac_object[key]['id'],
+		'id':transfac_object[key]['ID'],
 		'pwm': transfac_object[key]['pwm']
 		})
 
-print(json.dumps(biglist, indent = 4))
-#print(biglist[0]['pwm'][2]['G'])
-#print(matrix['AGL3']['G'][2])
+mcb185.print_transfac(transfac_object['SPL9D'])
