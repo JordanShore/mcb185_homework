@@ -7,6 +7,10 @@ The course is a useful course overall. As someone who has taken ECS32A I am stil
 ## Improving the Course ##
 My NPB168 professor _Dr. Jennifer Whistler_ includes extra credit quizzes and questions for improvements on the course. Then she reads them and actually makes the most prominent opinions from the students into changes she agrees with. I think this is the best strategy for improving any course. Her class is one of the best.
 
+I have 2 main suggestions for improvement;
+	1. Make Grading Objective
+	2. Make Assignments Clear
+
 ## Grading ##
 Your grading method is actually the only thing truly wrong with the class. Grades should be objective. The problem with not having an objective grade is it gives students no recourse to state that we deserve a different grade. With multiple choice tests and the like, we can say the professor is wrong and we are right, we can prove that we objectively deserve a certain grade. 
 Your method where you decide a grade at the end is maybe okay if you are nice, but it also allows a cruel professor to decide and lower the grade of students they don't like. This happens. And it never should happen. Because my grade, an evaluation of my learning of the content, should not be influenced by the professors personal opinion. The grade in a course should be just as objective as the validity of code or the accuracy of multiple choice answers. 
@@ -27,6 +31,8 @@ You note that most students will not make it through the course material. This i
 In my opinion, as someone who already learned Python before this class, it is a bit too much for a 3 unit class. Especially with the lack of resources. 
 
 You are teaching people useful skills, it's not a GE, it's not a fluff class. You actually don't have to overburden people with work. People are going to feel like they are behind due to this format, and then always be catching up which makes them not care about the new topics because they are preocuppied.
+
+This is hyperexacerbated by homework directions not being clear. The problem is that when we look things up we don't know if what we are thinking is correct and what can happen is we go in the wrong direction which makes our code wrong. When you don't explain what a Kozak Consensus is and what we are looking for, we can end up doing 5 hours of coding that then has to be thrown out because we went on a wild goose chase. We are trying to learn to code, that doesn't need to be stacked on top of learning complex biology on our own. 
 
 So how do you lessen the amount of course material so that most people can actually get through the full course without taking any out for those that want it?
 

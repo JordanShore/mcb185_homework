@@ -43,7 +43,7 @@ biglist = []
 transfac_object = mcb185.extract_transfac(sys.argv[1])
 for key in transfac_object.keys():
 	biglist.append({
-		'id':transfac_object[key]['id'],
+		'id':transfac_object[key]['ID'],
 		'pwm': transfac_object[key]['pwm']
 		})
 

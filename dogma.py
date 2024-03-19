@@ -235,6 +235,7 @@ def protein_indexes(aaseq, proteins_list):
 
 	return protein_locs
 
+'''
 def read_catalog_csv(filepath):
    catalog = []
    with open(filepath) as fp:
@@ -249,3 +250,4 @@ def read_catalog_csv(filepath):
           }
           catalog.append(record)
   return catalog
+'''
