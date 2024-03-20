@@ -18,14 +18,6 @@ pwm is a list full of dictionaries with 'acgt' keys
 The index in the list for each dictionary
 represents that position in the sequence
 '''
-def addto_pwm(instance,pwm):
-	finalpwm = pwm
-#instance[i] returns where we are in the sequence string
-#[instance[i]] uses this as the key for the pwm dictionary
-	for i in range(len(instance)):
-		finalpwm[i][instance[i]] += 1
-
-	return finalpwm
 
 #Take in gbff file to analyze and initialize variables
 filename = sys.argv[1]
@@ -37,13 +29,13 @@ atseq = False
 startpat = '[1234567890]{1,}\.\.[1234567890]{1,}'
 
 #This goes through the file and collects;
-	#id,ac,cc,rep
+	#id, ac, cc, rep
 #Also makes a list of all the Kozac sequences
 with gzip.open(filename, 'rt') as file:
 	
 	for line in file:
 
-#Collect ac,cc,rep information. dc uses all 3.
+#Collect ac, cc, rep information. de uses all 3.
 		if "VERSION" in line:
 			line = line.split()
 			ec_ac = line[1]
@@ -60,16 +52,16 @@ with gzip.open(filename, 'rt') as file:
 		if line[5:8] == "CDS":
 			line = line.split()
 			cdsloc = line[1]
-			mstart = re.search(startpat,cdsloc)
+			mstart = re.search(startpat, cdsloc)
 			while mstart != None:
 				regions = mstart.group(0).split("..")			
 				if 'complement' in cdsloc:
 					kozac_complocs.append(int(regions[1]))
 				else:
 					kozac_oglocs.append(int(regions[0]))
-				gonext = cdsloc.find(mstart.group(0))+len(mstart.group(0))
+				gonext = cdsloc.find(mstart.group(0)) + len(mstart.group(0))
 				cdsloc = cdsloc[gonext:]
-				mstart = re.search(startpat,cdsloc)
+				mstart = re.search(startpat, cdsloc)
 
 #Storing the DNA sequence		
 		if "ORIGIN" in line:
@@ -100,7 +92,7 @@ kozac_pwm = mcb185.make_pwm(kozac_list[0])
 #Iterates through the list of kozac sequences and 
 #adds the values to the pwm.
 for kozac_string in kozac_list:
-	kozac_pwm = addto_pwm(kozac_string.upper(), kozac_pwm)
+	kozac_pwm = mcb185.addto_pwm(kozac_string.upper(), kozac_pwm)
 
 #Put everything in transfac format
 kozac_transfac = mcb185.make_transfac("ECKOZ", kozac_pwm, ec_ac, ec_cc, ec_rep)

@@ -1,1 +1,12 @@
-880 | 4 | 12094 | 490 | 1095 | 214 | 
+#Makes a pwm for the kozac sequences.		
+acceptor_pwm = mcb185.make_pwm(acceptor_list[0])
+
+#Iterates through the list of kozac sequences and 
+#adds the values to the pwm.
+for acceptor_string in acceptor_list:
+	acceptor_pwm = mcb185.addto_pwm(acceptor_string.upper(), acceptor_pwm)
+
+#Put everything in transfac format
+acceptor_transfac = mcb185.make_transfac("ACC", kozac_pwm, organism)
+acceptor_transfac['DE'] = 'splice acceptor'
+mcb185.print_transfac(acceptor_transfac)
