@@ -2,6 +2,10 @@
 #
 #This is a library for Central Dogma functions. 
 
+import gzip
+import sys
+import re
+import mcb185
 
 def transcribe(dna):
 	return dna.replace('T', 'U')
@@ -235,19 +239,239 @@ def protein_indexes(aaseq, proteins_list):
 
 	return protein_locs
 
+
+#Cleans a line of the sequence of a gbff file
+#returns only string of nucleotides.
+def clean_line(line):
+	cleaned = ""
+	line = line.split()
+	cleaned = "".join(line[1:])
+	return cleaned
+
+#Makes a pwm list of length equal to the number of 
+#nucleotides in your example sequence with all weights = 0
+def make_pwm(example):
+	pwm = []
+	for nucleotide in example:
+		pwm.append({'A': 0, 'C': 0, 'G': 0,'T': 0})
+
+	return pwm
+
+
 '''
-def read_catalog_csv(filepath):
-   catalog = []
-   with open(filepath) as fp:
-       for line in fp:
-           if line.startswith('#'): continue
-           name, length, seq, desc = line.rstrip().split(',')
-           record = {
-               'Name': name,
-               'Length': length,
-              'Sequence': seq,
-              'Description': desc
-          }
-          catalog.append(record)
-  return catalog
+#OuterDictionary
+ID = Key : MiddleDictionary = Value
+#MiddleDictionary
+'id' = Key : ID = Value, 'pwm' = Key : InnerList = Value, 
+'AC'/'DE' etc... = Key : AC/DE = Value, 'CC' = Key : InnerDictionary = 'Value'
+#InnerDictionary
+'tax_group'/'tf_class' etc... = Key : TAX_GROUP/TF_CLASS = Value
+#InnerList
+InnermostDictionary = Element
+#InnermostDictionary
+'ACGT' = Key : Float = Value
 '''
+#extract_transfac extracts all the relevant information from a transfac file.
+#Extras is a dictionary that holds AC/DE etc... until the end of round,
+#denoted by '//', because ID is not the first piece of information given.
+def extract_transfac(filename):
+	count = 0
+	transfac_object = {}
+	matrix_here = False
+	extras = {}
+	with gzip.open(filename, 'rt') as file:
+		for line in file:
+			count += 1
+			line = line.split()
+			if line[0] == "//":
+				for key in extras:
+					transfac_object[identification][key] = extras[key]
+				extras = {}
+			elif line[0] == "ID":
+				identification = line[1]
+				transfac_object[identification] = {}
+				transfac_object[identification]['CC'] = {}
+				transfac_object[identification]['ID'] = identification
+				transfac_object[identification]['pwm'] = []
+			elif line[0] == "PO":
+				matrix_here = True
+			elif line[0] == "XX":
+				matrix_here = False
+			elif matrix_here == True:
+				transfac_object[identification]['pwm'].append({
+				"A":line[1],
+				"C":line[2],
+				"G":line[3],
+				"T":line[4],
+				})
+			elif line[0] == "CC":
+				info = line[1].split(":")
+				infokey = info[0]
+				infovalue = info[1] 
+				transfac_object[identification]['CC'][infokey] = infovalue
+			else:
+				extras[line[0]] = "".join(line[1:])
+			#print(count)
+			#if count > 100:
+				#break
+	#print(json.dumps(id_matrix_dictionary, indent = 4))
+	return transfac_object		
+
+#Makes a transfac instance assuming;
+	#cc contains a dictionary
+	#pwm contains a list of dictionaries
+def make_transfac(tid, pwm, ac = 'NA', cc = 'NA', rep = 'NA'):
+	transfac_singular = {}
+	transfac_singular['ID'] = tid
+	transfac_singular['AC'] = ac
+	transfac_singular['CC'] = cc
+	transfac_singular['DE'] = ac + ' ' + tid + ' ; ' + 'From ' + rep
+	transfac_singular['pwm'] = pwm
+	return transfac_singular
+
+def addto_pwm(instance,pwm):
+	finalpwm = pwm
+#instance[i] returns where we are in the sequence string
+#[instance[i]] uses this as the key for the pwm dictionary
+	for i in range(len(instance)):
+		finalpwm[i][instance[i]] += 1
+
+	return finalpwm
+
+'''
+#Outerdictionary
+'id' = Key : ID = Value, 'pwm' = Key : InnerList = Value, 
+'AC'/'DE' etc... = Key : AC/DE = Value, 'CC' = Key : MiddleDictionary = 'Value'
+#MiddleDictionary
+'tax_group'/'tf_class' etc... = Key : TAX_GROUP/TF_CLASS = Value
+#InnerList
+InnerDictionary = Element
+#InnerDictionary
+'ACGT' = Key : Float = Value
+'''
+#Takes in a transfac_singular and prints in transfac format.
+def print_transfac(transfac_singular):
+	print('AC', transfac_singular['AC'])
+	print('XX')
+	print('ID', transfac_singular['ID'])
+	print('XX')
+	print('DE', transfac_singular['DE'])
+	for head in ['PO','A','C','G','T']:
+		print(f'{head:<8}', end = "")
+	print()
+	for i in range(len(transfac_singular['pwm'])):
+		val_a = transfac_singular['pwm'][i]['A']
+		val_c = transfac_singular['pwm'][i]['C']
+		val_g = transfac_singular['pwm'][i]['G']
+		val_t = transfac_singular['pwm'][i]['T']
+		for head in [i+1,val_a,val_c,val_g, val_t]:
+			head = float(head)
+			print(f'{head:<8.0f}', end = "")
+		print()
+	print('XX')
+	if (transfac_singular['CC'] != 'NA'):
+		for cc_key,cc_value in transfac_singular['CC'].items():
+			print('CC',cc_key + ":" + cc_value)
+	else: 
+		print('CC NA')
+	print('XX')
+	print('//')
+
+#Same function, but prints pwm as proportions
+def print_transfac_prop(transfac_singular):
+	print('AC', transfac_singular['AC'])
+	print('XX')
+	print('ID', transfac_singular['ID'])
+	print('XX')
+	print('DE', transfac_singular['DE'])
+	for head in ['PO','A','C','G','T']:
+		print(f'{head:<8}', end = "")
+	print()
+	for i in range(len(transfac_singular['pwm'])):
+		val_a = transfac_singular['pwm'][i]['A']
+		val_c = transfac_singular['pwm'][i]['C']
+		val_g = transfac_singular['pwm'][i]['G']
+		val_t = transfac_singular['pwm'][i]['T']
+		for head in [i+1,val_a,val_c,val_g, val_t]:
+			if head == i+1:
+				print(f'{head:<8.0f}', end = "")
+			else:
+				head = float(head)
+				print(f'{head:<8.3f}', end = "")
+		print()
+	print('XX')
+	if (transfac_singular['CC'] != 'NA'):
+		for cc_key,cc_value in transfac_singular['CC'].items():
+			print('CC',cc_key + ":" + cc_value)
+	else: 
+		print('CC NA')
+	print('XX')
+	print('//')
+
+#Prints a fasta file using soft or hardmasking based on entropy
+def print_enmask(path,windowsize,enthreshold,soft):
+	if soft == 'True':
+		soft = True
+	elif soft == 'False':
+		soft = False
+
+	for defline, seq in mcb185.read_fasta(path):
+		start = 0
+		end = start + windowsize
+		window = seq[start:end]
+		finalseq = window
+
+
+	#The following does the first check for a low entropy window
+	#On only the first window
+
+		acount = window.count('A')
+		ccount = window.count('C') 
+		gcount = window.count('G')
+		tcount = window.count('T')
+		entropy = shannon_entropy(acount, ccount, gcount, tcount)
+
+
+	#For loop just building a string of Ns the size of the window
+
+		nstring = ""
+		for i in range(windowsize):
+			nstring += "N"
+
+
+	#Make the first window into Ns 
+
+		if (entropy < enthreshold) and (soft == False):
+			finalseq = nstring
+		elif (entropy < enthreshold) and (soft == True):
+			finalseq = window.lower()
+
+	#Loops through each window
+		for i in range(len(seq)-windowsize):
+			acount = window.count('A')
+			ccount = window.count('C') 
+			gcount = window.count('G')
+			tcount = window.count('T')
+
+			entropy = shannon_entropy(acount, ccount, gcount, tcount)
+
+	#Start and End increment changes the window
+			start += 1
+			end += 1 
+			window = seq[start:end]
+
+
+	#Now we append one at a time, either N or the nucleotide
+
+			if (entropy < enthreshold) and (soft == False):
+				finalseq += "N"
+			elif (entropy < enthreshold) and (soft == True):
+				finalseq += window[-1].lower()
+			else:
+				finalseq += window[-1]
+
+
+	#Print like a FASTA file
+		print(defline, end = "")
+		for i in range(0, len(finalseq), 60):
+			print(finalseq[i:i+60])

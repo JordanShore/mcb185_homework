@@ -62,12 +62,12 @@ def get_splice_seqs(splice_loc_list, chrom_dict):
 #Prints the transfacs given the lists of nucleotide strings
 def print_splice_transfacs(acceptor_list, donor_list):
 	#Makes a pwm for the kozac sequences.		
-	acceptor_pwm = mcb185.make_pwm(acceptor_list[0])
+	acceptor_pwm = dogma.make_pwm(acceptor_list[0])
 
 	#Iterates through the list of acceptor sequences and 
 	#adds the values to the pwm.
 	for acceptor_string in acceptor_list:
-		acceptor_pwm = mcb185.addto_pwm(acceptor_string.upper(), acceptor_pwm)
+		acceptor_pwm = dogma.addto_pwm(acceptor_string.upper(), acceptor_pwm)
 	
 	#Convert to proportions
 	for pos in acceptor_pwm:
@@ -78,17 +78,17 @@ def print_splice_transfacs(acceptor_list, donor_list):
 		for key, val in pos.items():
 			pos[key] = val / tot
 
-	acceptor_transfac = mcb185.make_transfac("ACC", acceptor_pwm, gff_file)
+	acceptor_transfac = dogma.make_transfac("ACC", acceptor_pwm, gff_file)
 	acceptor_transfac['DE'] = 'splice acceptor'
-	mcb185.print_transfac_prop(acceptor_transfac)
+	dogma.print_transfac_prop(acceptor_transfac)
 
 	#Makes a pwm for the kozac sequences.		
-	donor_pwm = mcb185.make_pwm(donor_list[0])
+	donor_pwm = dogma.make_pwm(donor_list[0])
 
 	#Iterates through the list of donor sequences and 
 	#adds the values to the pwm.
 	for donor_string in donor_list:
-		donor_pwm = mcb185.addto_pwm(donor_string.upper(), donor_pwm)
+		donor_pwm = dogma.addto_pwm(donor_string.upper(), donor_pwm)
 
 	#Convert to proportions
 	for pos in donor_pwm:
@@ -100,9 +100,9 @@ def print_splice_transfacs(acceptor_list, donor_list):
 			pos[key] = val / tot
 
 	#Put everything in transfac format
-	donor_transfac = mcb185.make_transfac("DON", donor_pwm, gff_file)
+	donor_transfac = dogma.make_transfac("DON", donor_pwm, gff_file)
 	donor_transfac['DE'] = 'splice donor'
-	mcb185.print_transfac_prop(donor_transfac)
+	dogma.print_transfac_prop(donor_transfac)
 
 
 #The actual code, utilizing all functions defined.

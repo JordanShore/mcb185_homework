@@ -2,13 +2,13 @@
 #
 #This program reads transfac files and outputs them in json format.
 
-import mcb185
+import dogma
 import json
 import gzip
 import sys
 
 '''
-mcb185.extract_transfac() gives an object where:
+dogma.extract_transfac() gives an object where:
 #OuterDictionary
 ID = Key : MiddleDictionary = Value
 #MiddleDictionary
@@ -40,7 +40,7 @@ The 3rd pwm value for 'G' for the ID 'AGL3'
 '''
 #This FOR loop converts the data as explained above.
 biglist = []
-transfac_object = mcb185.extract_transfac(sys.argv[1])
+transfac_object = dogma.extract_transfac(sys.argv[1])
 for key in transfac_object.keys():
 	biglist.append({
 		'id':transfac_object[key]['ID'],

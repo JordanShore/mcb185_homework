@@ -20,9 +20,7 @@ Participation
 | 6 |  2 |  0 |  1 |  0 |  0 |  1 |  0 |  0 |  6  | 0
 | 7 |  1 |  0 |  1 |  0 |  0 |  1 |  0 |  0 |  4  | 0
 | 8 |  1 |  0 |  1 |  0 |  0 |  1 |  0 |  0 |  4  | 0
-| 9 | 
+| 9 |  1 |  0 |  1 |  1 |  1 |  1 |  0 |  1 |  9  | ++
 
 Notes:
-
-1. I helped another student fix their github account
-2. I stayed after class and got help from the professor
+Wrote class improvements in markdown.

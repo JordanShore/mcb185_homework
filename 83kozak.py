@@ -70,7 +70,7 @@ with gzip.open(filename, 'rt') as file:
 		elif atseq == False:
 			continue
 		elif atseq == True:
-			og_seq += mcb185.clean_line(line)
+			og_seq += dogma.clean_line(line)
 
 #Switch from lower to upper and back because revcomp takes uppercase
 rev_seq = dogma.revcomp(og_seq.upper()).lower()
@@ -87,16 +87,16 @@ for loc in kozac_complocs:
 	kozac_list.append(rev_seq[loc-9:loc+5])
 	
 #Makes a pwm for the kozac sequences.		
-kozac_pwm = mcb185.make_pwm(kozac_list[0])
+kozac_pwm = dogma.make_pwm(kozac_list[0])
 
 #Iterates through the list of kozac sequences and 
 #adds the values to the pwm.
 for kozac_string in kozac_list:
-	kozac_pwm = mcb185.addto_pwm(kozac_string.upper(), kozac_pwm)
+	kozac_pwm = dogma.addto_pwm(kozac_string.upper(), kozac_pwm)
 
 #Put everything in transfac format
-kozac_transfac = mcb185.make_transfac("ECKOZ", kozac_pwm, ec_ac, ec_cc, ec_rep)
-mcb185.print_transfac(kozac_transfac)
+kozac_transfac = dogma.make_transfac("ECKOZ", kozac_pwm, ec_ac, ec_cc, ec_rep)
+dogma.print_transfac(kozac_transfac)
 
 		
 
