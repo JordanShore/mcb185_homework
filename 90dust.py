@@ -17,4 +17,4 @@ parser.add_argument('--lower', action='store_true', help='soft mask')
 arg = parser.parse_args()
 print('dusting with', arg.file, arg.size, arg.entropy, arg.lower)
 
-dogma.print_enmask(arg.file,arg.size,arg.entropy,arg.lower)
+dogma.print_enmask(arg.file, arg.size, arg.entropy, arg.lower)

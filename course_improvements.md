@@ -32,15 +32,17 @@ In my opinion, as someone who already learned Python before this class, it is a 
 
 You are teaching people useful skills, it's not a GE, it's not a fluff class. You actually don't have to overburden people with work. People are going to feel like they are behind due to this format, and then always be catching up which makes them not care about the new topics because they are preocuppied.
 
-This is hyperexacerbated by homework directions not being clear. The problem is that when we look things up we don't know if what we are thinking is correct and what can happen is we go in the wrong direction which makes our code wrong. When you don't explain what a Kozak Consensus is and what we are looking for, we can end up doing 5 hours of coding that then has to be thrown out because we went on a wild goose chase. We are trying to learn to code, that doesn't need to be stacked on top of learning complex biology on our own. 
+This is hyperexacerbated by homework directions not being clear. The problem is that when we look things up we don't know if what we are thinking is correct and what can happen is we go in the wrong direction which makes our code wrong. We can end up doing  hours of coding that then has to be thrown out because we went on a wild goose chase. We are trying to learn to code and use linux, that doesn't need to be stacked on top of learning complex biology on our own.
+Yes, there are prerequisites. But this doesn't mean that we recall things perfectly, or even correctly from one of many classes from many quarters ago.
+And don't forget, we are trying to integrate that knowledge with the new coding techniques we are learning at the same time, which makes confusion in any aspect exponentially more difficult to untangle.  
 
-So how do you lessen the amount of course material so that most people can actually get through the full course without taking any out for those that want it?
+Clarity in the assignment allows creativity in our code. 
 
 ### Solutions ###
 Make one of the hard problems in the HW Extra Credit each week. This way people can feel like they can ignore it if they are behind. ECS32A does this.
 
 Allow us to drop either an entire HW or some amount of problems from various HW. In the same vein, this will allow people to feel like they can catch up and continue with the class and it accounts for people falling behind at different times. 
-The problem is that coding builds on itself, so certain essential HWs would need to be un-droppable. 
+However since coding, especially in this class, builds on itself, certain essential HWs would need to be un-droppable. 
 
 ## Quizzes ##
 Having in class quizzes that count as part of our grade is perfectly reasonable, despite the possible discriminating aspects. The best solution to this is to allow some amount of quizzes to be dropped. A weekly quiz on Thursday that uses the material taught on Tuesday would help people learn because they have to apply the skills. 
@@ -51,14 +53,16 @@ It's a unique format, and could be part of the overall grade. You don't even hav
 You asked whether you should care about cheating. In a coding class my answer is no. 
 In real coding people can copy or ChatGPT whatever they want, and their skill is both, how fast and well can they adapt what they can copy, and how well they can deal with completely new problems to the world. 
 
+In your class in particular, there are rules about what we are allowed to use within class materials. ChatGPT doesn't code this way, so you could catch almost certainly catch it.
+
 My ECS32A professor _Dr. Edwin Solares_ said he made his midterms ChatGPT proof. So he'd do them using ChatGPT, and then change them so that it would be wrong. If you are going to care about cheating in coding, I feel like that was a very reasonable way to go about it. 
 
 ## Getting People to Type ##
-You want everyone to type everything line by line from the Units. It will never happen because it isn't mandatory. I could see these HW taking 3-8 hours for most people, and piling on another hour or two of typing that we don't get graded on is too much. 
+You want everyone to type everything line by line from the Units. It will never happen because it isn't mandatory. Some of these HW take 8+ hours for most people, and piling on another hour or two of typing that we don't get graded on is too much. The challenge presented is undoubtably high enough.
 Personally, I go through and make my own versions of the things I don't know and seem to be useful. Sometimes this is wrong and I need clarification or coderie help, but I still save so much time overall. 
 
 I also think it's ok that people don't type every single thing. But generally, the more you give them problems they have to deal with using the commands and are forced to type them, the more they will be engrained. 
-It's not necessary, but if you really wanted you could do a bunch of little assignments where we have to do command line stuff and > to a HW file. 
+If you really wanted you could do a bunch of little assignments where we have to do command line stuff and > to a HW file. 
 
 ## Failing Students ##
 I know you don't want to fail anybody. But if someone doesn't come to class, doesn't come to coderies, doesn't do the HW, some people deserve to fail. It should be a very low percentage, but at the point where it makes it so we don't have an objective grading system, they should fail. 

@@ -188,6 +188,12 @@ def kd_hydrophobicity(aa):
 
 	return hpb
 
+
+def print_asfasta(defline, seq):
+	print('>' + defline)
+	for i in range(0, len(seq), 60):
+		print(seq[i:i+60])
+
 '''
 WHILE loop evaluates all the potential proteins in an aa transcript.
 Each iteration evaluates a single possible protein.
@@ -409,7 +415,7 @@ def print_transfac_prop(transfac_singular):
 	print('//')
 
 #Prints a fasta file using soft or hardmasking based on entropy
-def print_enmask(path,windowsize,enthreshold,soft):
+def print_enmask(path, windowsize, enthreshold, soft):
 	if soft == 'True':
 		soft = True
 	elif soft == 'False':
@@ -471,7 +477,4 @@ def print_enmask(path,windowsize,enthreshold,soft):
 				finalseq += window[-1]
 
 
-	#Print like a FASTA file
-		print(defline, end = "")
-		for i in range(0, len(finalseq), 60):
-			print(finalseq[i:i+60])
+		print_asfasta(defline, finalseq)
